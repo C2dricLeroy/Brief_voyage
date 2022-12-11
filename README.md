@@ -48,6 +48,7 @@ L'agence de voyage consulte les différents compagnies afun de proposer des solu
 - Récupère le choix du client et confirme la réservation auprès de la compagnie.
 - La compagnie définit un numéro de réservation.
 - La réservation peut être composée d'un ou plusieurs vols (escales) et est composée des informations de vols pour chacun.
+- L'agence de voyage définit un prix composé du prix des places additionné à sa commission.
 
 #### Compagnie aérienne
 La compagnie est le festionnaire des différents vols.
@@ -80,6 +81,9 @@ Le use case diagram nous sert ici à décrire les fonctionnalités de notre appl
 
 ### 3. Réalisation du diagramme d'activité
 
+Un diagramme d'activité dans sa forme la plus épurée est réalisé afin de représenter le parcours client.
+
+![activity diagram](Activity_diagram.png)
 
 
 ### 4. Réalisation du diagramme de séquence
@@ -102,17 +106,63 @@ Le use case diagram nous sert ici à décrire les fonctionnalités de notre appl
 
 ![sequence 04](sequence_04.png)
 
+
 ### 5. Réalisation d'un diagramme de classe
 
+Le diagramme de classe permet de représenter les différents acteurs de notre application selon les principes de l'orienté Objet. Sa forme est volontairement complexe de façon à ce que l'ajout de fonctionnalités ou d'acteurs à l'avenir soit aisé. 
+
+Une première version a été réalisée, suivant nos séquences : 
+![class diaram 1](class_diagram_1.png)
+Cependant, celui-ci n'est pas orienté objet et ne suit pas les formes normales.
+L'ajout de classes abstraites nous permet d'obtenir ce diagramme : 
+
+![class diagram 2](class_diagram_2.png). 
+
+Ce diagramme s'approche de notre version finale. L'ajout d'une classe passager était nécessaire à la bonne communication entre nos classes.
+
+La version finale, propre: 
+
+![class diagram](class_diagram_3.png)
 
 ### 6. Rédaction du dictionnaire de donnée
 
+Une première version du dictionnaire a été esquissée lors de notre modélisation du diagramme de séquence, puis progressivement modifiée lors de notre modélisation du diagramme de classe : 
 
-Une première version du dictionnaire a été esquissée lors de notre modélisation du diagramme de séquence : 
+| Nom de la donnée  | Description                      | Format | Type        |          | Règles de calcul        |
+|-------------------|----------------------------------|--------|-------------|----------|-------------------------|
+|                   |                                  |        | Elementaire | Calculée |                         |
+| Client            |                                  |        |             |          |                         |
+| client_firstname  | First name of the client         | string | x           |          |                         |
+| client_lastname   | Last name of the client          | string | x           |          |                         |
+| client_mail       | mail of the client               | string | x           |          |                         |
+| client_phone      | client phone number              | string | x           |          |                         |
+| Réservation       |                                  |        |             |          |                         |
+| desired_departure | desired departure city           | string | x           |          |                         |
+| desired_arrival   | desired departure city           | string | x           |          |                         |
+| date_of_departure | Desired departure date           | date   | x           |          |                         |
+| date_of_arrival   | Desired arrival date             | date   | x           |          |                         |
+| isConfirmed       | Booking reservation              | bool   | x           |          |                         |
+| passenger         |                                  |        |             |          |                         |
+| passenger_name    | name of the passenger            | string | x           |          |                         |
+| passport_number   | number of the passport           | num    | x           |          |                         |
+| ticket_number     | number of the ticket             | string | x           |          |                         |
+| Agency            |                                  |        |             |          |                         |
+| commission        | price of the agency commission   | string | x           |          |                         |
+| agency_name       | name of the agency               | string | x           |          |                         |
+| price             | price of the booking             | num    |             | x        | seat_price + commission |
+| airplane          |                                  |        |             |          |                         |
+| flight_number     | Number of the flight             | num    | x           |          |                         |
+| company_name      | name of the company              | string | x           |          |                         |
+| departure_hour    | hour of departure for the flight | date   | x           |          |                         |
+| arrival_hour      | hour of arrival for the flight   | date   | x           |          |                         |
+| departure_date    | date of the departure            | date   | x           |          |                         |
+| arrival_date      | date of the departure            | date   | x           |          |                         |
+| departure_airport | airport of departure             | string | x           |          |                         |
+| arrival_airport   | airport of arrival               | string | x           |          |                         |
+| seat              |                                  |        |             |          |                         |
+| seat_number       | number of the seat               | num    |             |          |                         |
+| isAvailable ?     | is the seat available ?          | bool   | x           |          |                         |
+| seat_price        | price for the seat               | num    | x           |          |                         |
 
-(((((insérer tableau premier dictionnaire)))))
-
-Dans un second temps, celui-ci a été complété lors de la modélisation de notre diagramme de classe : 
-
-(((insérer deuxième version dictionnaire)))
+### 7. Réalisation du MCD 
 
