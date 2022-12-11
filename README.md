@@ -149,7 +149,7 @@ Une première version du dictionnaire a été esquissée lors de notre modélisa
 | Agency            |                                  |        |             |          |                         |
 | commission        | price of the agency commission   | string | x           |          |                         |
 | agency_name       | name of the agency               | string | x           |          |                         |
-| price             | price of the booking             | num    |             | x        | seat_price + commission |
+| total_price             | price of the booking             | num    |             | x        | seat_price + commission |
 | airplane          |                                  |        |             |          |                         |
 | flight_number     | Number of the flight             | num    | x           |          |                         |
 | company_name      | name of the company              | string | x           |          |                         |
@@ -166,3 +166,6 @@ Une première version du dictionnaire a été esquissée lors de notre modélisa
 
 ### 7. Réalisation du MCD 
 
+Dans la continuité du diagramme de classe et à partir du du dictionnaire de donnée. Une représentation simplifiée des données est proposée à travers notre MCD (modèle conceptuel des données) construit selon la méthode Merise
+
+![mcd](mcd.png)
